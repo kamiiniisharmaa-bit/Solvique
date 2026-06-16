@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Solvique — About Us | Philosophy & Atelier</title>
+  <!-- Google Fonts + modern reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FEFCF8;
+      color: #151B2C;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* header - consistent with other pages */
+    .site-header {
+      background: #FFFFFF;
+      border-bottom: 1px solid #EFECE4;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.95rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, #1B2B44, #2D4070);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+
+    .logo span {
+      background: none;
+      color: #2D3E6E;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2C2F36;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #2C3E6E;
+    }
+
+    .icon-group {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .icon-group svg {
+      width: 22px;
+      height: 22px;
+      stroke: #2C2F36;
+      stroke-width: 1.5;
+      fill: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .icon-group svg:hover {
+      stroke: #2C3E6E;
+    }
+
+    /* about page specific styling */
+    .about-hero {
+      background: linear-gradient(135deg, #F6F3EE 0%, #FEFCF8 100%);
+      padding: 80px 0 64px;
+      border-bottom: 1px solid #EFECE4;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #151B2C;
+      margin-bottom: 20px;
+    }
+
+    .about-hero .tagline {
+      font-size: 1.25rem;
+      color: #5A5F6E;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .about-section {
+      padding: 80px 0;
+      border-bottom: 1px solid #EFECE4;
+    }
+
+    .about-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-grid.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .about-text {
+      flex: 1.2;
+    }
+
+    .about-text h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1B2B44;
+      letter-spacing: -0.3px;
+    }
+
+    .about-text .subhead {
+      font-size: 1.1rem;
+      color: #2C3E6E;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: #3C4152;
+      line-height: 1.7;
+    }
+
+    .about-image {
+      flex: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+
+    /* values grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      background: #FFFFFF;
+      padding: 32px 24px;
+      border-radius: 28px;
+      border: 1px solid #F0EDE6;
+      transition: 0.25s;
+      text-align: center;
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 28px -12px rgba(0,0,0,0.08);
+    }
+
+    .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .value-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1B2B44;
+    }
+
+    .value-card p {
+      color: #5A5F6E;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* team / founder section */
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .team-member {
+      flex: 1;
+      min-width: 240px;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 24px -10px rgba(0,0,0,0.15);
+    }
+
+    .team-member h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .team-member .role {
+      color: #2C3E6E;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .team-member .bio {
+      font-size: 0.85rem;
+      color: #5A5F6E;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    /* sustainability stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      margin: 48px 0 24px;
+      text-align: center;
+    }
+
+    .stat {
+      background: #F6F3EE;
+      padding: 32px 20px;
+      border-radius: 28px;
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #2C3E6E;
+      line-height: 1;
+    }
+
+    .stat-label {
+      margin-top: 12px;
+      font-weight: 500;
+      color: #1B2B44;
+    }
+
+    /* newsletter / connect */
+    .connect-section {
+      background: #F6F3EE;
+      border-radius: 48px;
+      padding: 64px 48px;
+      margin: 40px 0 0;
+      text-align: center;
+    }
+
+    .connect-section h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .connect-section p {
+      max-width: 500px;
+      margin: 0 auto 28px;
+      color: #4A4E5C;
+    }
+
+    .btn-primary {
+      background-color: #2C3E6E;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #1E2C50;
+      transform: translateY(-2px);
+    }
+
+    /* footer */
+    .footer {
+      background: #1B212C;
+      color: #DDDCD8;
+      padding: 56px 0 32px;
+      margin-top: 64px;
+      border-radius: 48px 48px 0 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-col p {
+      margin-top: 12px;
+      max-width: 240px;
+      font-size: 0.85rem;
+    }
+
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block;
+      color: #BCBAB2;
+      text-decoration: none;
+      margin: 8px 0;
+      font-size: 0.85rem;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.75rem;
+      border-top: 1px solid #2E3543;
+      padding-top: 28px;
+    }
+
+    @media (max-width: 800px) {
+      .about-hero h1 {
+        font-size: 2.3rem;
+      }
+      .about-hero .tagline {
+        font-size: 1rem;
+        padding: 0 16px;
+      }
+      .container {
+        padding: 0 20px;
+      }
+      .about-section {
+        padding: 50px 0;
+      }
+      .about-text h2 {
+        font-size: 1.7rem;
+      }
+      .connect-section {
+        padding: 40px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">SOLVI<span>QUE</span></a>
+      <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+      </div>
+      <div class="icon-group">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
+          <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" />
+        </svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
+          <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13L19 19H7M17 17H8" />
+          <circle cx="8" cy="20" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="17" cy="20" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <div class="about-hero">
+      <div class="container">
+        <h1>Form follows <br>conviction.</h1>
+        <p class="tagline">Solvique was born from a quiet rebellion against fast fashion — a commitment to pieces that earn their place in your life through integrity, craft, and time.</p>
+      </div>
+    </div>
+
+    <!-- Philosophy section -->
+    <div class="about-section">
+      <div class="container about-grid">
+        <div class="about-text">
+          <h2>A different kind of house.</h2>
+          <p class="subhead">Slow. Intentional. Radical in its quietness.</p>
+          <p>Solvique began in 2018 as a small atelier in the heart of Paris, driven by a simple belief: clothing should not demand to be replaced every season. We design for the long arc — pieces that move with you, that soften and improve with age, that carry memory and meaning.</p>
+          <p>Every Solvique garment is the result of months, sometimes years, of material research. We work exclusively with mills that share our ethics: organic fibers, closed-loop dyeing, transparent wages. We reject the conventional fashion calendar, releasing collections only when they are truly ready.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://picsum.photos/id/103/600/700" alt="Solvique atelier workspace with natural textures">
+        </div>
+      </div>
+    </div>
+
+    <!-- Values / Pillars -->
+    <div class="about-section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 32px;">
+          <h2>What we stand for</h2>
+          <p style="color: #5A5F6E; max-width: 600px; margin: 12px auto 0;">Four principles that guide every stitch, every decision.</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🌾</div>
+            <h3>Material Honesty</h3>
+            <p>We source linen, wool, and cotton from regenerative farms. No polyester blends, no greenwashing — only traceable, natural fibers.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🕰️</div>
+            <h3>Radical Durability</h3>
+            <p>Every seam is reinforced. Every button is ethically sourced. We offer a lifetime mending service — because repair is an act of love.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Transparent Atelier</h3>
+            <p>Our workshops in Portugal and France pay living wages. We publish our supply chain openly and invite audits from our community.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌍</div>
+            <h3>Carbon-Conscious</h3>
+            <p>We ship plastic-free, offset remaining emissions, and are working toward circularity with a take-back program launching 2027.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founders & Team section -->
+    <div class="about-section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2>The hands behind Solvique</h2>
+          <p style="color: #5A5F6E; max-width: 550px; margin: 12px auto 0;">A small team of designers, artisans, and storytellers.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-member">
+            <img src="https://picsum.photos/id/64/300/300" alt="Creative director portrait">
+            <h3>Elara Venn</h3>
+            <div class="role">Founder & Creative Director</div>
+            <p class="bio">Former architect, turned textile obsessive. Elara believes that clothing is the closest form of shelter.</p>
+          </div>
+          <div class="team-member">
+            <img src="https://picsum.photos/id/65/300/300" alt="Head of materials">
+            <h3>Jules Morvan</h3>
+            <div class="role">Head of Materials & Sustainability</div>
+            <p class="bio">Jules spent a decade in fair-trade cotton cooperatives before joining Solvique to lead our regenerative sourcing.</p>
+          </div>
+          <div class="team-member">
+            <img src="https://picsum.photos/id/91/300/300" alt="Atelier manager">
+            <h3>Min-Ji Park</h3>
+            <div class="role">Atelier Director</div>
+            <p class="bio">Master tailor with 20 years of experience, Min-Ji oversees every pattern and final stitch from our Paris workshop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sustainability / Impact stats -->
+    <div class="about-section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h2>Our impact (so far)</h2>
+          <p style="color: #5A5F6E;">Small numbers, big intention — because scale without care means nothing.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">traceable fibers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">87%</div>
+            <div class="stat-label">less water than industry average</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">1,240+</div>
+            <div class="stat-label">garments repaired since launch</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">€48k</div>
+            <div class="stat-label">donated to textile education</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manifesto / connect section -->
+    <div class="container">
+      <div class="connect-section">
+        <h2>Join the quiet movement.</h2>
+        <p>We don't believe in loud marketing or artificial scarcity. Just honest clothing and the people who choose to wear it slowly.</p>
+        <a href="#" class="btn-primary">Subscribe to our letters</a>
+        <p style="font-size: 0.8rem; margin-top: 24px; opacity: 0.7;">No spam. Occasional essays, early access, and fabric deep-dives only.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h3 style="color:white;">SOLVIQUE</h3>
+          <p>Slow luxury rooted in material honesty. Designed to outlast seasons, meant to be cherished.</p>
+        </div>
+        <div class="footer-col">
+          
+      </div>
+      <div class="copyright">
+        © 2026 Solvique — an atelier for the considered life.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
